@@ -1,0 +1,30 @@
+<h1>Song Catalogue</h1>
+
+<ol>
+    <li *ngFor="let song of songs">
+        <h2>
+            {{song.title | uppercase}}
+        </h2>
+        <div class="tag-container">
+            This will be tags one day
+        </div>
+
+        <button (click)="toggleDetails(song)">Toggle Details</button>
+
+        <app-song-detail
+            *ngIf="displayDetails[song.id]"  
+            [song]="song">
+        </app-song-detail>
+    </li>
+    <!-- <li *ngFor="let song of songs">
+        <h2 (click)="toggleLyrics(song)">
+            {{song.title | uppercase}}
+        </h2>
+
+        <div *ngIf="song.showLyrics">
+            <h3>Lyrics:</h3>
+            <p>{{song.lyrics}}</p>
+        </div>
+    </li> -->
+
+</ol>

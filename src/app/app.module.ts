@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { SongsComponent } from './songs/songs.component';
+import { SongDetailComponent } from './songs/song-detail/song-detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SongsComponent,
+    SongDetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
