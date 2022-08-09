@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SongService } from 'src/app/song.service';
 import { Song } from '../../song';
 
 const newSong: Song = {
@@ -14,7 +15,8 @@ const newSong: Song = {
 })
 export class SongDetailComponent implements OnInit {
   @Input() song: Song = newSong;
-  constructor() { 
+
+  constructor(private songService: SongService) { 
   }
   
   ngOnInit(): void {

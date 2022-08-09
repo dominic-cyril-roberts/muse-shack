@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SONGS } from '../mock-songs';
 import { Song } from '../song';
+import { SongService } from '../song.service';
 
 @Component({
   selector: 'app-songs',
@@ -8,13 +9,18 @@ import { Song } from '../song';
   styleUrls: ['./songs.component.css']
 })
 export class SongsComponent implements OnInit {
-
+  songs: Song[] = [];
   displayDetails: any = {};
-  songs: Song[] = SONGS;
+  
 
-  constructor() { }
+  constructor(private songService: SongService) { }
 
   ngOnInit(): void {
+    this.songService.getAllSongs().subscribe(
+      {
+        next: (songs) => this.songs = songs
+      }
+    );
   }
 
   toggleDetails(song: Song) {
