@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { SONGS } from '../mock-songs';
-import { Song } from '../song';
-import { SongService } from '../song.service';
+import { Song } from './song-data/song';
+import { SongService } from './song-service/song.service';
 
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
-  styleUrls: ['./songs.component.css']
+  styleUrls: ['./songs.component.scss']
 })
 export class SongsComponent implements OnInit {
   songs: Song[] = [];
