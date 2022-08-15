@@ -1,21 +1,23 @@
 <h1>Song Catalogue</h1>
-
-<ol>
-    <li class="song" *ngFor="let song of songs">
+<input type="search" name="song-search" id="song-search" (change)="filter(searchValue)" #searchValue>
+<div>
+    <li class="song" *ngFor="let song of songsList">
         <div class="title-container"
-             (click)="toggleDetails(song)">
+        (click)="toggleDetails(song)">
             <h2 >
                 {{song.title | titlecase}}  
             </h2>
-
+            
             <span *ngIf="song.tags" class="tag-container">
                 tags: <span class = "tag" *ngFor="let tag of song.tags">{{tag}} </span>
             </span>
         </div>
-
-        <app-song-detail
-            *ngIf="displayDetails[song.id]"  
-            [song]="song">
-        </app-song-detail>
+    
+        <app-lyrics
+            *ngIf="displayDetails[song.id]"
+            [class.easeIn]="displayDetails[song.id]"  
+            [song]="song"
+            id="{{song.id}}">
+        </app-lyrics>
     </li>
-</ol>
+</div>

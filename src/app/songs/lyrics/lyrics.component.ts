@@ -10,11 +10,11 @@ const newSong: Song = {
 }
 
 @Component({
-  selector: 'app-song-detail',
-  templateUrl: './song-detail.component.html',
-  styleUrls: ['./song-detail.component.scss']
+  selector: 'app-lyrics',
+  templateUrl: './lyrics.component.html',
+  styleUrls: ['./lyrics.component.scss']
 })
-export class SongDetailComponent implements OnInit {
+export class LyricsComponent implements OnInit {
   @Input() song: Song = newSong;
   markdown: any;
 
