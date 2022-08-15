@@ -1,9 +1,13 @@
 <h1>Song Catalogue</h1>
-<input type="search" name="song-search" id="song-search" (change)="filter(searchValue)" #searchValue>
+
+<input type="text" name="song-search" id="song-search" (keyup)="filter(searchValue)" #searchValue>
+
 <div>
     <li class="song" *ngFor="let song of songsList">
+
         <div class="title-container"
-        (click)="toggleDetails(song)">
+             (click)="toggleDetails(song)">
+
             <h2 >
                 {{song.title | titlecase}}  
             </h2>
@@ -14,8 +18,7 @@
         </div>
     
         <app-lyrics
-            *ngIf="displayDetails[song.id]"
-            [class.easeIn]="displayDetails[song.id]"  
+            [hidden]="!displayDetails[song.id]"
             [song]="song"
             id="{{song.id}}">
         </app-lyrics>

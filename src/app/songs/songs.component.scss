@@ -12,7 +12,7 @@
             flex: 1;
             padding: 5px;
             border-bottom: 1px solid white;
-            transition: background-color 200ms, height 3s;
+            transition: flex ease-in .3s;
 
             &:hover{
                 cursor: pointer;
@@ -39,12 +39,12 @@
 
         app-lyrics {
             flex: 1;
-
-            transform: translateX(100%);
-            transition: transform ease-out 23s;;
+            opacity: 0%;
             
-            &.easeIn {
-                transform: translateX(0);
+            transition: opacity ease-out .3s;
+            
+            &.ease-in {
+                opacity: 100%;
             }
         }
 

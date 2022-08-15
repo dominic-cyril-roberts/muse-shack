@@ -28,28 +28,59 @@ export class SongsComponent implements OnInit {
   }
 
   public toggleDetails(song: Song) {
+    let songDetails: HTMLElement | null = document.getElementById(`${song.id}`);
+    
+    if(songDetails) {
+      this.toggleClass(songDetails, 'ease-in');
+    }
+    
     if(this.displayDetails[song.id]) {
-      this.displayDetails[song.id] = !this.displayDetails[song.id];
+    
+      this.toggleClass(songDetails!, 'ease-in', undefined, () => {this.displayDetails[song.id] = !this.displayDetails[song.id]})
     } else {
       this.displayDetails[song.id] = true;
     }
+  }
+  
+  /**
+   * Utility to toggle a class on an element asynchronously. Useful for triggering transitions
+   * 
+   * @param element 
+   * @param classname 
+   */
+  public toggleClass(element: HTMLElement, classname: string, before?: Function, after?: Function) {
+    if(before) {
+      before();
+    }
 
-    if(this.displayDetails[song.id]) {
-      let songDetails = document.getElementById(`song.id`);
-      if(songDetails) {
-        setTimeout(() => {songDetails!.classList.add('ease-in')}, 0);
-      }
+    if(element.classList.contains(classname)) {
+
+      setTimeout(() => {
+
+        element!.classList.remove(classname);
+
+        if(after) {
+          setTimeout(after, 200);
+        }
+      }, 0);
+    } else {
+
+      setTimeout(() => {
+        
+        element!.classList.add(classname);
+        
+        if(after) {
+          setTimeout(after, 200);
+        }
+      }, 0);
     }
   }
 
   public filter(e: any) {
-    console.log("change event fired with object " + e.value);
     if(e && e.value && this.songsCache) {
       this.songsList = this.songsCache.filter( (song) => { return song.title.indexOf(e.value) !== -1; });
     } else if (!e || !e.value) {
       this.songsList = [...this.songsCache];
     }
-    console.log(this.songsList!);
-    console.log(this.songsCache!);
   }
 }
