@@ -1,16 +1,17 @@
 @use "../../styles.scss" as global;
 
 :host{
-
+    #song-search {
+        margin: 10px;
+        margin-bottom: 2em;
+        background-color: #f7d7d7;
+    }
     .song {
         display: flex;
-
-        .title-container {
-            
-            display: flex;
-            
+        border-top: 2px solid white;
+        .title-container {            
             flex: 1;
-            padding: 5px;
+            padding: 10px;
             border-bottom: 1px solid white;
             transition: flex ease-in .3s;
 
@@ -20,8 +21,62 @@
             }
             
             h2 {
-                margin: 2px;
-                margin-bottom: 10px;
+                margin: 10px;
+            }
+
+            .widget-container {
+                display: flex;
+
+                flex: 1;
+                flex-wrap: wrap;
+                // flex-direction: column;
+                justify-content: start;
+                align-items: center;
+                z-index: 1;
+                
+                
+                .lyrics {
+                    background: linear-gradient(#800A,#800A), no-repeat url("../../assets/transcribe.png");
+                }
+
+                .listen {
+                    background: linear-gradient(#600A,#800A), no-repeat url("../../assets/listen.png");
+                }
+                
+                .record {
+                    background: linear-gradient(#600A,#800A), no-repeat url("../../assets/record.png");
+                }
+                
+                .transcribe {
+                    background: linear-gradient(#600A,#800A), no-repeat url("../../assets/transcribe.png");
+                }
+
+                .widget {
+                    color: white;
+                    font-size: 2em;
+                    min-width: 300px;
+                    min-height: 225px;
+                    margin: 5px;
+                    border: 1px solid white;
+                    border-width: 1px 0px;
+
+                    &.selected {
+                        // background: rgba(255, 0, 0, 0.332);
+                        background: linear-gradient(#800A,#900A);
+                    }
+                    
+                    &.selected:after {
+                        content: "";
+                        display: block;
+                        width: 10%;
+                        height: 10%;
+                        transform: rotate(45deg);
+                        background-color: #eee;
+                    }
+                    &:hover:not(.selected) {
+                        background: #A00A;
+                    }
+                }
             }
 
             .tag-container {

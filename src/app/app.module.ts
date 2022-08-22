@@ -7,9 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MarkdownModule } from 'ngx-markdown';
 import { AppComponent } from './app.component';
 import { SongsComponent } from './songs/songs.component';
-import { LyricsComponent } from './songs/lyrics/lyrics.component';
+import { LyricsComponent } from './songs/lyrics-component/lyrics.component';
 
-import { MarkdownService } from 'ngx-markdown';
 @NgModule({
   declarations: [
     AppComponent,

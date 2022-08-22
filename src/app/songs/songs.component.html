@@ -15,6 +15,21 @@
             <span *ngIf="song.tags" class="tag-container">
                 tags: <span class = "tag" *ngFor="let tag of song.tags">{{tag}} </span>
             </span>
+            
+            <div *ngIf="displayDetails[song.id]" class="widget-container">
+                <button class="lyrics widget selected" (click)="test($event)">
+                    Lyrics
+                </button>
+                <button class="listen widget" (click)="test($event)">
+                    Listen
+                </button>
+                <button class="record widget" (click)="test($event)">
+                    Record
+                </button>
+                <button class="transcribe widget" (click)="test($event)">
+                    Transcribe
+                </button>
+            </div>
         </div>
     
         <app-lyrics
